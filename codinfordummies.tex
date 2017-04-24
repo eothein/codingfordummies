@@ -64,8 +64,11 @@
   \tableofcontents
 \end{frame}
 
-\section{De eerste codes}
 
+\section{De eerste codes}
+\sectionframe{When Cryptography is outlawed, bayl bhgynjf jvyy unir cevinpl \\\begin{flushright}
+		-- John Perry Barlow
+\end{flushright} }
 \begin{frame}{Cryptografie}
 	Het woord \textcolor{HoGentBlue}{cryptografie} betekent letterlijk  \textcolor{HoGentBlue}{‘geheim schrijven’} of  \textcolor{HoGentBlue}{‘verborgen schrijven’}, het is voortgekomen uit de 2 griekse woorden 
 	\begin{itemize}
@@ -171,6 +174,9 @@ NYXFN ARWJU UXCQN ALJBN BXKBN AENRC
 \end{frame}
 
 \section{Iets formeler}
+\sectionframe{Cryptography shifts the balance of power from those with a monopoly on violence to those who comprehend mathematics and security design. \\\begin{flushright}
+		Jacob Appelbaum
+\end{flushright}}
 
 \begin{frame}{Adam, Alice \& Eve}
 	\begin{figure}
@@ -183,8 +189,243 @@ NYXFN ARWJU UXCQN ALJBN BXKBN AENRC
 		\item[Symmetrisch] Wanneer de sleutel om te versleutelen en ontsleutelen dezelfde is. Versleuteling kan enkel veilig gebeuren wanneer er een veilige sleuteluitwisseling tussen Alice en Bob gebeurd is.
 	\item[Assymetrisch] Of ook publieke sleutel cryptografie waarbij het versleutelen en ontsleutelen met een verschillende sleutel moet. 
 \end{description}
-We merken op dat hedendaagse versleutelingsmechanismen vaak geen gelaagde combinatie van bovengenoemde types zijn.
+We merken op dat hedendaagse versleutelingsmechanismen vaak een gelaagde combinatie van bovengenoemde types zijn.
 \end{frame}
+
+\begin{frame}{Enkele definities}
+	\begin{description}
+		\item[Plaintext / Cleartext] Het ongecodeerde bericht. 
+			
+		\item[Encryption] de codering van de plaintext
+		\item[Ciphertext] 
+		
+		Dit is de uiteindelijke tekst, in versleutelde vorm. Bij een goed gecodeerde tekst is de ciphertext een onbegrijpelijke boodschap, waaruit onbevoegden praktisch onmogelijk de plaintext kunnen halen.
+		\item[Decryption] 
+		
+		De decryption is de stap die de ontvanger uitvoert om het originele bericht weer uit de ciphertext te halen. 
+		\item[Key] 
+		
+		De key is   de sleutel die je nodig hebt om een ciphertext te decoderen. 
+		\item[Cryptanalysis] 
+		
+		Dit begrip houdt het kraken van een gecodeerde tekst in. 
+		\item[Cryptology] 
+		
+		Cryptologie is een net iets minder ruim begrip dan Cryptografie. Bij cryptologie wordt namelijk alleen de wiskundige kant van de cryptografie bestudeerd.
+	\end{description}
+
+\end{frame}
+
+\begin{frame}{Kraakpogingen - Kerckhoffs' principes}
+	
+	\begin{enumerate}
+		\item Het systeem dient, zelfs als het in theorie niet onbreekbaar is, in de praktijk onbreekbaar te zijn. \pause
+		\item \textcolor{HoGentAccent1}{Het ontwerp van het systeem behoort niet geheim te hoeven zijn en dient, indien gecompromitteerd, de correspondenten niet te kunnen schaden.}\pause
+		\item De sleutel moet onthoudbaar zijn zonder notities en dient makkelijk veranderd te kunnen worden.\pause
+		\item De cryptogrammen moeten overgebracht kunnen worden door middel van telegrafie.\pause
+		\item Het apparaat of de documenten dienen draagbaar te zijn en te kunnen worden bediend door een enkel persoon.\pause
+		\item Het systeem dient gemakkelijk te zijn, niet onderhevig aan kennis van allerlei regels of aan mentale inspanning\pause
+\end{enumerate}
+	\textcolor{HoGentAccent1}{Belangrijk: \textit{principe van Kerckhoffs}}: de veiligheid van een cryptografisch systeem mag niet van de geheimhouding van het versleutelingssysteem maar slechts van de geheimhouding van de sleutel afhangen.
+
+\end{frame}
+
+\begin{frame}{Kraakpoging - Brute Force}
+	\brightbox{Brute force (Engels voor "brute kracht") is het gebruik van rekenkracht om een probleem op te lossen met een computer zonder gebruik te maken van algoritmen of heuristieken}
+
+\begin{itemize}
+	\item 	 De methode bestaat uit het botweg uitproberen van alle mogelijke opties, net zo lang tot er een gevonden is die overeenkomt met de gewenste invoer.
+\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Combo Attack}
+	Gebruik een woordenboek en plak de verschillende woorden tezamen.
+	\begin{itemize}
+		\item dictionary1.txt \& dictionary2.txt
+		\item pass $ \rightarrow $ password, passpass, passlion
+		\item word $ \rightarrow $ wordpass, wordword, wordlion
+		\item lion $ \rightarrow $ lionpass, lionword, lionlion 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Combo Attack}
+Combo attack, maar met de mogelijkheid een willekeurige reeks letters toe te voegen
+	\begin{itemize}
+	\item dictionary.txt \& abcde
+	\item pass $ \rightarrow $ passAbc, passBcd, passCde
+	\item word $ \rightarrow $ wordAbc, wordBcd, wordCde
+	\item lion $ \rightarrow $ lionAbc, lionBcd, lionCde
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Use Case: Wordpress websites}
+	Als je gebruikt maakt van Wordpress ben je kwetsbaar voor Brute Force attacks.
+	
+	Je kan hiertegen een aantal eenvoudige maatregelen gebruiken:
+	\begin{enumerate}
+		\item Sterke paswoorden gebruiken
+		\item De admingebruikersnaam veranderen
+		\item Het aantal loginpogingen beperken
+		\item Loginpagina anders noemen
+		\item IP adressen die toegang hebben beperken
+		\item CAPTCHA toevoegen
+	\end{enumerate}
+\end{frame}
+
+\section{RSA}
+\sectionframe{\begin{center}
+		\includegraphics[width=\textwidth]{img/security.png}
+\end{center}}
+
+
+\begin{frame}{RSA}
+
+\textbf{-----BEGIN PUBLIC KEY-----}\\
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvUWEGue
+PMihBxG8/mhi1z9YdCXEDk01iqLcYEKa4uPfPao0DAU2/4hSkWu
+JCgBkAzJns8hz7DKskdRrTnhG1rcomyLFz07GFq1qkmpc6bL1UW
+UNsdIOtu0CsgbtdeFW5OMJhezljf/jvuYRpE+eNPwHmg0233JvN
+TVQ2ZNUO9eXX7gt1qYKZiHR3warYYE+7ro6BOwY3pBOG8iIm3zj
+u2ioICGFH/hd9Jd19+mZwWneccYv89W1eSyPYg5yBWIIYLSFZA9
+imlO0Xe3/ifRQyDjaE5YbTQt6/CkBYmObp009Exp3QwPnpYLTKM
+zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
+\textbf{-----END PUBLIC KEY-----}
+\end{frame}
+
+\begin{frame}{RSA}
+	\includegraphics[width=\textwidth]{img/secret.png}
+\end{frame}
+
+\begin{frame}{RSA}
+	\includegraphics[width=\textwidth]{img/bank.jpg}
+\end{frame}
+
+\begin{frame}{RSA}
+	\includegraphics[width=\textwidth]{img/box.jpg}
+\end{frame}
+
+\begin{frame}{RSA}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			\includegraphics[width=\textwidth]{img/bank.jpg}
+		\end{column}
+	
+		\begin{column}[T]{0.5\textwidth}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg} \\
+						\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg} \\
+						\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg}
+			\includegraphics[width=0.3\textwidth]{img/box.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{RSA}
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{img/padlock.jpeg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RSA}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			\includegraphics[width=\textwidth]{img/bank.jpg}
+		\end{column}
+		
+		\begin{column}[T]{0.5\textwidth}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg} \\
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg} \\
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+			\includegraphics[width=0.3\textwidth]{img/padlock.jpeg}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Modulo rekenen}
+
+\begin{frame}{Modulo rekenen}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Stel dat het op een moment 20 uur is  , en je telt daar 7 uur bij op. Dan zou het volgens gewone rekenmethodes dus 20 + 7 = 27 uur moeten zijn.
+			
+			Maar niemand noemt dat 27 uur, iedereen zegt 3 uur. Dat komt natuurlijk omdat het de volgende dag is geworden en die 24 uur van de vorige dag interesseren ons niet zoveel meer.
+		\end{column}
+		
+		\begin{column}[T]{0.5\textwidth}
+				\includegraphics[width=\textwidth]{img/clock.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Modulo rekenen}
+
+	Zij $n$ n een natuurlijk getal ongelijk $\neq 0$, dan heten de twee gehele getallen $a$ en $b$ congruent modulo $n$, genoteerd:
+	
+	\[ 
+		a \equiv b \pmod{n}
+	\]
+	
+	als hun verschil $a - b$ een geheel veelvoud is van $n$.
+	
+	Het getal $n$ wordt de modulus genoemd.
+	
+\end{frame}
+
+\begin{frame}{Voorbeelden modulo rekenen}
+	\begin{eqnarray}
+			26  \pmod{8} &= \pause 2 \\
+			-13 \pmod{8} &= \pause 3 \\
+			257 \pmod{8} &= \pause 1 
+	\end{eqnarray}
+\end{frame}
+
+\begin{frame}{Andere notatie}
+	\begin{eqnarray}
+	26  \pmod{8} &=  2 + k \times 8 \\
+	-13 \pmod{8} &= 3 + k \times 8\\
+	257 \pmod{8} &=  1 + k \times 8
+	\end{eqnarray}
+\end{frame}
+
+\begin{frame}{Modulo Rekenregels$_1$}
+	\[ a \pmod{m} + b \pmod{m}  =  (a + b)  \pmod{m}\]
+\end{frame}
+
+\begin{frame}{Modulo Rekenregels$_2$}
+	\[ a \pmod{m} \times b \pmod{m}  =  (a \times b)  \pmod{m}\]
+\end{frame}
+
+\begin{frame}{Modulo Rekenregels$_3$}
+	\[ (a \pmod{m})^n  =  a^n  \pmod{m}\]
+\end{frame}
+
+\begin{frame}{Toepassing bankrekeningen - Nederland}
+	\[ c_1c_2c_3c_4c_5c_6c_7c_8c_9\]
+	Nu is $c_9$ zo gekozen dat, als je dit getal  $\pmod{11}$ neemt, er 0 uitkomt.
+	
+\end{frame}
+
+\begin{frame}{Toepassing bankrekeningen - Nederland}
+	\[ 45824365c_9\]
+	bepaal
+	\[ 9 \times 4 + 8 \times 5 + \dots + 2 \times 5 \]
+	Kies $c_9$ zodat $\sum_i^9  i \times c_i \pmod{11} = 0$ \\
+	Als de som 204 is dan moet $c_9 = 5$ 
+	
+\end{frame}
+
+
+
 
 %---------- Back matter -------------------------------------------------------
 
