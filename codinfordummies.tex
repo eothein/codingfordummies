@@ -353,6 +353,7 @@ zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
 
 \subsection{Modulo rekenen}
 
+
 \begin{frame}{Modulo rekenen}
 	\begin{columns}
 		\begin{column}[T]{0.5\textwidth}
@@ -423,6 +424,206 @@ zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
 	Als de som 204 is dan moet $c_9 = 5$ 
 	
 \end{frame}
+
+\sectionframe
+
+\begin{frame}{Omgekeerde functie}
+	Men verstaat onder de inverse van een variabele $x$ ten opzichte van een bepaalde binaire bewerking het getal $x^{-1}$, waarvoor het resultaat van de bewerking toegepast op $x$ en de inverse het neutrale element van die bewerking oplevert.
+	
+	\[
+		7 \times 328 = 2296
+	\]
+	Dit is eigenlijk een versleuteling van 7.
+	
+	\[ 
+		2296 * \times \frac{1}{328} = 7
+	\]
+	
+	of 
+	\[ 
+		328 \times \frac{1}{328} = 1
+	\]
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 1}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Neem 2 grote priemgetallen (100 cijfers of meer). 
+			Laten we die getallen $p_1$ en $p_2$ noemen.
+		\end{column}
+			\begin{column}[T]{0.5\textwidth}
+				Voorbeeld
+		\[ p_1 = 5 \wedge  p_2 = 7\]
+		\end{column}
+	\end{columns}
+	
+	
+
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 2}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+Vermenigvuldig $p_1$ en $p_2$. 
+
+\[ m = p_1 \times p_2  \]
+Dit noemen we de modulus en vormt een deel van de publieke sleutel. 
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 3}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Bereken een getal $\Phi$ =  het aantal getallen kleiner dan $m$ dat geen priemfactor met $m$ gemeenschappelijk heeft
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Priemfactoren?}
+	Priemgetallen zijn de bouwstenen van alle andere getallen:  elk getal kan opgedeeld worden in priemfactoren. 
+	
+	Bv. 
+	\[
+		12 = 4 \times 3 = 2 \times 2 \times 3 = 2^2 \times 3
+	\]
+	
+	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 3}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Bereken een getal $\Phi$ =  het aantal getallen kleiner dan $m$ dat geen priemfactor met $m$ gemeenschappelijk heeft
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+			$m$ is opgebouwd uit de priemfactoren 5 en 7. Dus alle getallen onder de 35 waar een 5 of een 7 inzit vallen af.  Dat zijn 5, 10, 15, 20, 25, 30, 35, 7, 14, 21, 28  dus dat zijn er 11. Dus blijven er 35 - 11 = 24 getallen over, dus Φ(35) = 24.
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 3}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Bereken een getal $\Phi$ =  het aantal getallen kleiner dan $m$ dat geen priemfactor met $m$ gemeenschappelijk heeft
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+			\[ \Phi = \Phi(p_1 . p_2) = (p_1 -1) \times (p_2 -1) \]
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 3}
+	\begin{itemize}
+		\item Alle getallen uit de tafel van $p_1$  vallen af, dat zijn er $p_2$
+		\item Alle getallen uit de tafel van $p_2$ vallen af, dat zijn er $p_1$
+		\item Maar nu hebben we het getal $p_1 \times p_2$  dubbel meegeteld, dus er moet weer eentje bij.
+	\end{itemize}
+	
+	Dan blijft over  
+	\[ ()p_1 \times p_2) - p_1 - p_2 + 1  =   (p_1 - 1)\times(p_2 - 1) \]
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 3}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Bereken een getal $\Phi$ =  het aantal getallen kleiner dan $m$ dat geen priemfactor met $m$ gemeenschappelijk heeft
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+			\[ \Phi(35) =4 \times 6 = 24 \]
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 4}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Kies een nieuw getal $e$ kleiner $ < m$, waarvoor geldt dat dat getal geen deler met $\Phi$ gemeenschappelijk mag hebben.
+			
+			Dan is $e$  uit allemaal andere priemfactoren opgebouwd dan $\Phi$.
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+			\[ \Phi(35) =4 \times 6 = 24 \]
+			\[ \Phi(35) =  2 . 2 . 2 . 3  \rightarrow e \in {5,7,25} \]  
+			Stel $e$ = 7.
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+
+\begin{frame}{RSA Algoritme : stap 4}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Je maakt deze getallen  $m$ en $e$ openbaar. Zij vormen samen jouw publieke sleutel.
+		\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ p_1 = 5 \wedge  p_2 = 7\]
+			\[ 7 \times 5 = 35 = m \]
+			\[ \Phi(35) =4 \times 6 = 24 \]
+			\[ \Phi(35) =  2 . 2 . 2 . 3  \rightarrow e \in {5,7,25} \]  
+			Stel $e$ = 7. \\
+			Versleuteling is: \[ G = B^e  \pmod{m} \]
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{RSA Algoritme : versleutelingsvoorbeeld}
+	\begin{itemize}
+		\item Stel A = 01, B = 02, C = 03 \dots.
+		\item Stel dat je het miniberichtje B = "12"  wilt versturen (de letter L dus). 
+		\item Dan bereken je dus  $G = 12^7 \pmod{35} = 33$
+		\item Je verstuurt  het geheime bericht $G = 33$.	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{RSA Algoritme : stap 5}
+	\begin{columns}
+		\begin{column}[T]{0.5\textwidth}
+			Cre\"eer $d$ waarvoor geldt:  $e \times d = 1 \pmod{\Phi}$.
+			Ontsleuteling is \[ B = 33^7 \pmod{35}  \]	
+	\end{column}
+		\begin{column}[T]{0.5\textwidth}
+			Voorbeeld
+			\[ B = 33^7 \pmod{35} \]
+			\[ 33^7 \pmod{35} \]
+			\[  33^4 \pmod{35} \times 33^3 \pmod{35} \]
+			\[ 51 \times 27 \pmod{35} \]
+			\[ 1377 \pmod{35} = 12 \]
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Kleine stelling van Fermat}
+	
+	Voor elk priemgetal $p$ en elk getal $a$ dat geen priemfactoren $p$ heeft geldt:  
+	
+	\[ a^p  = a \pmod{p} \]
+	
+\end{frame}
+
+
 
 
 
