@@ -370,7 +370,7 @@ zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
 
 \begin{frame}{Modulo rekenen}
 
-	Zij $n$ n een natuurlijk getal ongelijk $\neq 0$, dan heten de twee gehele getallen $a$ en $b$ congruent modulo $n$, genoteerd:
+	Zij $n$ n een natuurlijk getal $\neq 0$, dan heten de twee gehele getallen $a$ en $b$ congruent modulo $n$, genoteerd:
 	
 	\[ 
 		a \equiv b \pmod{n}
@@ -420,11 +420,12 @@ zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
 	\[ 45824365c_9\]
 	bepaal
 	\[ 9 \times 4 + 8 \times 5 + \dots + 2 \times 5 \]
-	Kies $c_9$ zodat $\sum_i^9  i \times c_i \pmod{11} = 0$ \\
+	Kies $c_9$ zodat $\sum_i^9  i \times c_i \pmod{11} = 0$ \\ \pause
 	Als de som 204 is dan moet $c_9 = 5$ 
 	
 \end{frame}
 
+\subsection{RSA Algoritme}
 \sectionframe
 
 \begin{frame}{Omgekeerde functie}
@@ -509,7 +510,7 @@ Dit noemen we de modulus en vormt een deel van de publieke sleutel.
 			Voorbeeld
 			\[ p_1 = 5 \wedge  p_2 = 7\]
 			\[ 7 \times 5 = 35 = m \]
-			$m$ is opgebouwd uit de priemfactoren 5 en 7. Dus alle getallen onder de 35 waar een 5 of een 7 inzit vallen af.  Dat zijn 5, 10, 15, 20, 25, 30, 35, 7, 14, 21, 28  dus dat zijn er 11. Dus blijven er 35 - 11 = 24 getallen over, dus Φ(35) = 24.
+			$m$ is opgebouwd uit de priemfactoren 5 en 7. Dus alle getallen onder de 35 waar een 5 of een 7 inzit vallen af.  Dat zijn 5, 10, 15, 20, 25, 30, 35, 7, 14, 21, 28  dus dat zijn er 11. Dus blijven er 35 - 11 = 24 getallen over, dus $\Phi$ = 24.
 		\end{column}
 	\end{columns}	
 \end{frame}
@@ -536,7 +537,7 @@ Dit noemen we de modulus en vormt een deel van de publieke sleutel.
 	\end{itemize}
 	
 	Dan blijft over  
-	\[ ()p_1 \times p_2) - p_1 - p_2 + 1  =   (p_1 - 1)\times(p_2 - 1) \]
+	\[ (p_1 \times p_2) - p_1 - p_2 + 1  =   (p_1 - 1)\times(p_2 - 1) \]
 \end{frame}
 
 \begin{frame}{RSA Algoritme : stap 3}
@@ -615,16 +616,48 @@ Dit noemen we de modulus en vormt een deel van de publieke sleutel.
 	\end{columns}	
 \end{frame}
 
-\begin{frame}{Kleine stelling van Fermat}
+\begin{frame}{Waarom werkt dit: Kleine stelling van Fermat}
+	Het komt allemaal omdat de bewerking "tot-de-macht-d"  de inverse is van "tot-de-macht-e"  (beiden mod m).
+	
 	
 	Voor elk priemgetal $p$ en elk getal $a$ dat geen priemfactoren $p$ heeft geldt:  
 	
 	\[ a^p  = a \pmod{p} \]
 	
+	Voorbeeld: $67 = 279936 = 6 + 279930 = 6 + 7 \times 39990 = 6 (mod 7)$
+	
+\end{frame}
+
+\begin{frame}{Waarom is dit moeilijk te kraken}
+	\begin{itemize}
+		\item RSA is zo moeilijk te ontcijferen omdat het haast niet te doen is om van een enorm getal $m$ te vinden uit welke twee priemgetallen $m$ is opgebouwd. Als $m$ uit veel meer priemfactoren zou bestaan zou dat veel makkelijker te vinden zijn, want zodra je er dan eentje hebt gevonden kun je m daardoor delen en wordt het snel kleiner.
+		\item Verder is RSA ondanks die enorme getallen toch  makkelijk te gebruiken omdat machtsverheffen bij modulorekenen makkelijk is.
+		\item 	Het bericht $B$ dat je wilt versturen mag niet groter zijn dan $e$. Als dat wel zo is, dan moet je het eerst in kleinere stukken hakken en die 1 voor 1 doorsturen.
+	\end{itemize}
+
+
 \end{frame}
 
 
+\begin{frame}{Samenvattend}
+	\begin{enumerate}
+		\item Kies grote priemgetallen $p$ en $q$ (minstens 100 cijfers elk).
+		\item Bepaal de modulus $m = p \times q$.
+		\item Bereken $\Phi = (p-1)(q-1)$.
+		\item Kies een vercijferexponent $e$ waarvoor $ggd(e,\Phi) = 1$.
+		\item Bereken $d$ zo, dat $e \times d = 1 \pmod{\Phi}$.
+		\item Maak de getallen $m$ en $e$ bekend. Samen vormen die de openbare sleutel.
+		\item Houd $d$ geheim. Dat is de geheime sleutel.
+		\item Vercijferen:$ E(x) = x^e \pmod{m}$
+		\item Ontcijferen: $D(y) = y^d \pmod{m}$
+	\end{enumerate}
+\end{frame}
 
+\begin{frame}{Voorbeeld}
+	 Als priemgetallen nemen we p = 74471 en q = 98773. 
+	 \pause
+	 De modulus m = p x q is dan 7355724083. Het getal n = (p – 1)(q – 1) is nu 7355550840, en voor e nemen we 619. Het algoritme van Euclides leert ons dat e inderdaad geen delers met n gemeen heeft, en bovendien dat de inverse d van e gelijk is aan 4313513659. Neem nu als boodschap PRIEM. In cijfers wordt dat x = 1618090513. Vercijferen levert:
+\end{frame}
 
 
 
