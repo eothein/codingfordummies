@@ -72,6 +72,9 @@
 \sectionframe{When Cryptography is outlawed, bayl bhgynjf jvyy unir cevinpl \\\begin{flushright}
 		-- John Perry Barlow
 \end{flushright} }
+
+%% When cryptography is outlawed, only outlaws will have privacy.
+
 \begin{frame}{Cryptografie}
 	Het woord \textcolor{HoGentBlue}{cryptografie} betekent letterlijk  \textcolor{HoGentBlue}{‘geheim schrijven’} of  \textcolor{HoGentBlue}{‘verborgen schrijven’}.\\
 	We herkennen hierin de 2 Griekse woorden 
@@ -100,7 +103,7 @@
 \end{frame}
 
 
-%% Aeanas: 4BC
+%% Aeanas: 4e eeuw BC
 
 
 \begin{frame}{Aenas' Telegraaf}
@@ -171,6 +174,11 @@ Nadeel: Slechts een beperkt aantal boodschappen kon verzonden worden.
 \begin{frame}[fragile]{Caesarscode}
 	Elke letter wordt vervangen door de letter die een afgesproken aantal plaatsen (bv.\ 3) verder in het alfabet staat. 
 	
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{img/Caesar-Code.png}
+	\end{center}
+	
+	
 	Na de 'Z' komt opnieuw de 'A'.
 	
 	\begin{block}{Code}
@@ -186,7 +194,7 @@ Nadeel: Slechts een beperkt aantal boodschappen kon verzonden worden.
 	\pause
 	\begin{itemize}
 		\item Biedt slechts 25 mogelijkheden tot versleuteling. (Computer kan dit makkelijk kraken)
-		\item De letter E komt heel erg vaak voor in de taal. 
+		\item De letter 'E' komt heel erg vaak voor in de taal. 
 		Door te tellen welke letter het meest voorkomt kan je al goed raden wat de E zal zijn. 
 		\item Je weet ook al wat de woorden zijn.
 	\end{itemize}
@@ -242,7 +250,7 @@ NYXFN ARWJU UXCQN ALJBN BXKBN AENRC
 \begin{frame}{Cryptografieindeling}
 	\begin{description}
 		\item[Symmetrisch] Wanneer de sleutel om te versleutelen en ontsleutelen dezelfde is. Versleuteling kan enkel veilig gebeuren wanneer er een veilige sleuteluitwisseling tussen Alice en Bob gebeurd is.
-	\item[Asymetrisch] Of ook \textbf{publieke sleutel} cryptografie waarbij het versleutelen en ontsleutelen met een verschillende sleutel moet
+	\item[Asymmetrisch] Of ook \textbf{publieke sleutel} cryptografie waarbij het versleutelen en ontsleutelen met een verschillende sleutel moet
 	gebeuren.
 \end{description}
 We merken op dat hedendaagse versleutelingsmechanismen vaak een gelaagde combinatie van bovengenoemde types zijn.
@@ -280,16 +288,24 @@ We merken op dat hedendaagse versleutelingsmechanismen vaak een gelaagde combina
 \begin{frame}{Voorbeeld Plaintext en Ciphertext}
 \begin{center}
 \begin{figure}
-	\includegraphics[width=0.40\textwidth]{img/Tux.png}
+	\includegraphics[width=0.40\textwidth]{img/tux.png}
 	\quad
-	\includegraphics[width=0.40\textwidth]{img/Tux_secure.png}
+	\includegraphics[width=0.40\textwidth]{img/tux_secure.png}
 \end{figure}
 \end{center}
 \end{frame}
 
 
 
-
+\begin{frame}{Voorbeeld Plaintext en Zwakke Ciphertext}
+\begin{center}
+	\begin{figure}
+		\includegraphics[width=0.40\textwidth]{img/tux.png}
+		\quad
+		\includegraphics[width=0.40\textwidth]{img/tux_ecb.png}
+	\end{figure}
+\end{center}
+\end{frame}
 
 
 %% Auguste Kerchoffs: 1835 -- 1903. Nederlands taalkundige en cryptograaf. Was professor in Parijs aan het einde van de 19e eeuw.
@@ -305,7 +321,7 @@ We merken op dat hedendaagse versleutelingsmechanismen vaak een gelaagde combina
 		\item Het apparaat of de documenten dienen draagbaar te zijn en te kunnen worden bediend door een enkel persoon.\pause
 		\item Het systeem dient gemakkelijk te zijn, niet onderhevig aan kennis van allerlei regels of aan mentale inspanning\pause
 \end{enumerate}
-	\textcolor{HoGentAccent1}{Belangrijk: \textit{principe van Kerckhoffs}}: de veiligheid van een cryptografisch systeem mag niet van de geheimhouding van het versleutelingssysteem maar slechts van de geheimhouding van de sleutel afhangen.
+	\textcolor{HoGentAccent1}{Belangrijk: \textit{principe van Kerckhoffs}}: de veiligheid van een cryptografisch systeem mag \textbf{niet} van de geheimhouding van het \textbf{versleutelingssysteem} maar slechts van de geheimhouding van de \textbf{sleutel} afhangen.
 
 \end{frame}
 
@@ -436,7 +452,7 @@ zhjfgk+5Bg3O2wVVX+1ny7QqLSHrQIDAQAB\\
 \begin{frame}{Modulo rekenen}
 	\begin{columns}
 		\begin{column}[T]{0.5\textwidth}
-			Stel dat het op een moment 20 uur is , en je telt daar 7 uur bij op. Dan zou het volgens gewone rekenmethodes dus 20 + 7 = 27 uur moeten zijn.
+			Stel dat het op een moment 20 uur is, en je telt daar 7 uur bij op. Dan zou het volgens gewone rekenmethodes dus 20 + 7 = 27 uur moeten zijn.
 			
 			Maar niemand noemt dat 27 uur, iedereen zegt 3 uur. Dat komt natuurlijk omdat het de volgende dag is geworden en die 24 uur van de vorige dag interesseren ons niet zoveel meer.
 		\end{column}
@@ -554,7 +570,7 @@ M.a.w.\ de som die berekend wordt moet steeds een veelvoud zijn van 11.
  & = 3 + 7 + 1 + 1 + 9 + 1 + 7 + 10 \\
  & =6
 	 \end{align*}
-Om een veelvoud van 11 te bekomen moet $c_9 = 5$.	
+Om een veelvoud van 11 te bekomen moet $c_1 = 5$.	
 \end{frame}
 
 \begin{frame}{Toepassing bankrekeningen}
@@ -611,10 +627,10 @@ m.a.w.
 \]
 \end{frame}
 
-\begin{frame}{RSA: een voorbeeld van asymetrisch encryptie}
+\begin{frame}{RSA: een voorbeeld van asymmetrische encryptie}
 \begin{itemize}
 	\item Bedacht door \textbf{R}ivest–\textbf{S}hamir–\textbf{A}dleman in 1978.
-	\item E\'en van de eerste asymetrische encryptiesystemen.
+	\item E\'en van de eerste asymmetrische encryptiesystemen.
 	\item Gebruikt modulo rekenen.
 \end{itemize}
 
@@ -686,6 +702,13 @@ Wat zijn de getallen die w\'el priemfactoren gemeenschappelijk hebben met $15$?
 3, 6 , 9, 12, 5, 10
 \]
 Dus 4 veelvouden van 3 en 2 veelvouden van 5: 
+\[
+15 - 1 - 4 - 2 = 8.
+\]
+In het algemeen: als $n = p q$:
+\[
+\varphi(n) = pq - 1 - (p-1) - (q-1) = (p-1)(q-1).
+\]
 
 
 \end{frame}
@@ -1040,12 +1063,11 @@ a^{\varphi(n)} \pmod{n} = 1.
 \begin{itemize}
 	\item Alice genereert een private $d_A$ en een publieke sleutel $(n_A, e_A)$. 
 	\pause\item  Alice bezorgt de \textbf{publieke} sleutel aan Bob. (Op zo'n manier
-	dat Bob zeker is dat de sleutel van Alice is.
-	)
+	dat Bob zeker is dat de sleutel van Alice is.)
 	\pause \item Wanneer Alice de boodschap $m$ naar Bob wil zenden dan
 	  	ondertekent ze de boodschap met haar private sleutel:
 	  	\[
-	  	m_1 = m^d_A \pmod{n_A}.
+	  	m_1 = m^{d_A} \pmod{n_A}.
 	  	\]
 	\pause \item Wanneer Bob de boodscahp $m_1$ ontvangt, dan kan hij 
 	\textbf{verifi\"eren} dat de boodschap van Alice afkomstig is 
@@ -1058,7 +1080,7 @@ a^{\varphi(n)} \pmod{n} = 1.
 \end{frame}
 
 \begin{frame}{Probleem ?}
-\pause Iedereen kan de boodschap $m_1$ zien en iederee met de publieke 
+\pause Iedereen kan de boodschap $m_1$ zien en iedereen met de publieke 
 sleutel van Alice kan de boodschap lezen!
 
 \vspace{0.5cm}
