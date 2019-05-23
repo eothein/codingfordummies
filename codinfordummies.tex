@@ -731,7 +731,7 @@ In het algemeen: als $n = p q$:
 	\item $ n = 11 \times 13 = 143$.
 	\item $\varphi(n) = 10 \times 12 = 120$.
 	\item Stel dat $e = 7$ wordt gekozen. (Dit is OK want $\gcd(120, 7) = 1$.
-	\item We moeten de inverse van $e$ vinden modulo $120$. \\
+	\item We moeten de inverse van $e$ vinden modulo $120$. )\\
 	 Met het \textbf{uitgebreide algoritme van Euclides} vinden we dat $d = 103$.\\
 	 Inderdaad $ 7 \times 103 = 721 = 6 \times 120 + 1$, en dus is 
 	 $7 \times 103 \pmod{120} = 1$.
@@ -982,7 +982,7 @@ a^{\varphi(n)} \pmod{n} = 1.
 
 \begin{frame}{Waarom is dit moeilijk te kraken}
 	\begin{itemize}
-		\item RSA is zo moeilijk te ontcijferen omdat het haast niet te doen is om van een enorm getal $n$ te vinden uit welke twee priemgetallen $n$ is opgebouwd. Als $m$ uit veel meer priemfactoren zou bestaan zou dat veel makkelijker te vinden zijn, want zodra je er dan eentje hebt gevonden kun je m daardoor delen en wordt het snel kleiner.
+		\item RSA is zo moeilijk te ontcijferen omdat het haast niet te doen is om van een enorm getal $n$ te vinden uit welke twee priemgetallen $n$ is opgebouwd. Als $n$ uit veel meer priemfactoren zou bestaan zou dat veel makkelijker te vinden zijn, want zodra je er dan eentje hebt gevonden kun je $n$ daardoor delen en wordt het snel kleiner.
 		\item Verder is RSA ondanks die enorme getallen toch  makkelijk te gebruiken omdat machtsverheffen bij modulorekenen makkelijk is.
 		\item 	Het bericht $m$ dat je wilt versturen mag niet groter zijn dan $n$. Als dat wel zo is, dan moet je het eerst in kleinere stukken hakken en die \'e\'en voor \'e\'en doorsturen.
 	\end{itemize}
@@ -1099,6 +1099,12 @@ sleutel van Alice kan de boodschap lezen!
 	m = m_1^{e_A} \pmod{n_A}.
 	\]
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Praktisch}
+In de praktijk tekent Alice een \textbf{hash} van de boodschap die ze wil verzenden 
+en stuurt deze mee met de versleutelde boodschap.
 \end{frame}
 
 
